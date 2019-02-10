@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('project')->group(function (){
+    Route::get('/', 'ProjectsController@index');
+    Route::get('/create', 'ProjectsController@create');
+    Route::post('/create', 'ProjectsController@store');
+    Route::get('/download/{project}','ProjectsController@download');
+});
 
 Route::prefix('admin')->group(function (){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
