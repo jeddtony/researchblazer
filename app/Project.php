@@ -11,7 +11,7 @@ class Project extends MyModel
         return $this->belongsTo('App\User');
     }
     public function chapters(){
-        return $this->hasMany('App\Chapters');
+        return $this->hasMany('App\Chapter');
     }
 
     public function tags(){

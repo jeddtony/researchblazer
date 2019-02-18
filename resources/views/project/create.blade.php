@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.projectapp')
 @section('content')
 
     <div class="row p-4">
@@ -35,6 +35,10 @@
                 <button type="submit" class="btn btn-primary"> Submit</button>
                 </div>
             </form>
+        </div>
+
+        <div class="col-md-4">
+            @include('partials.tags')
         </div>
     </div>
     @endsection

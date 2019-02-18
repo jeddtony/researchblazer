@@ -18,7 +18,12 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-        $latest = Project::all()->latest();
+        $all = Project::all();
+        $latests = Project::latest()->limit(10)->get();
+        $populars = Project::orderBy('number_of_downloads', 'desc')->limit(10)->get();
+//        dd($all);
+//        dd($latests);
+        return view('project.index', compact('latests', 'populars'));
 
     }
 
@@ -77,7 +82,7 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         //
-
+        return view('project.show', compact('project'));
     }
 
     /**

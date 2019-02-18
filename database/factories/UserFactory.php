@@ -1,5 +1,6 @@
 <?php
 
+use App\Project;
 use App\User;
 use Faker\Generator as Faker;
 
@@ -39,5 +40,16 @@ $factory->define(App\Project::class, function(Faker $faker){
         'approved' => rand(0,1),
         'number_of_pages' => rand(0, 70),
         'number_of_downloads' => rand(1, 50),
+        'abstract' => $faker->paragraph,
+    ];
+});
+
+$factory->define(App\Chapter::class, function(Faker $faker){
+    return[
+        'project_id' => Project::all()->random()->id,
+        'chapter' => rand(1, 7),
+        'title' => $faker->title,
+        'link_to_storage' => $faker->url,
+        'number_of_pages' => rand(1, 40),
     ];
 });

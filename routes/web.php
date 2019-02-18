@@ -12,17 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('firstpage');
 });
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('project')->group(function (){
+Route::prefix('projects')->group(function (){
     Route::get('/', 'ProjectsController@index');
     Route::get('/create', 'ProjectsController@create');
     Route::post('/create', 'ProjectsController@store');
+    Route::get('/{project}', 'ProjectsController@show');
     Route::get('/download/{project}','ProjectsController@download');
 });
 

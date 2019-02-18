@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->composer('partials.tags', function ($view){
+            $view->with('tags', Tag::all());
+//            dd(Tag::all())
+        });
     }
 
     /**
