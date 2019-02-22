@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('link_to_storage');
             $table->boolean('approved')->default(0);
             $table->integer('number_of_pages')->nullable();
-            $table->text('abstract');
+            $table->text('abstract')->nullable();
             $table->integer('number_of_downloads')->nullable();
             $table->timestamps();
         });

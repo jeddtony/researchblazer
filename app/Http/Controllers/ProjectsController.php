@@ -6,6 +6,7 @@ use App\Project;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
@@ -70,7 +71,7 @@ class ProjectsController extends Controller
                 $projectId->tags()->attach($realTag);
             }
         }
-        return redirect('/project/create')->with('status', 'Project created successfully');
+        return redirect('/projects/create')->with('status', 'Project created successfully');
     }
 
     /**
@@ -120,6 +121,12 @@ class ProjectsController extends Controller
     }
 
     public function download(Project $project){
-        return Storage::get($project->link_to_storage);
+//        return Storage::get($project->link_to_storage);
+        $file = storage_path().'/app/'.$project->link_to_storage;
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+//       return Response::download(storage_path().'/app/'.$project->link_to_storage);
+        return response()->download($file, $project->title.'.pdf', $headers);
     }
 }

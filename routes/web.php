@@ -24,11 +24,14 @@ Route::prefix('projects')->group(function (){
     Route::get('/create', 'ProjectsController@create');
     Route::post('/create', 'ProjectsController@store');
     Route::get('/{project}', 'ProjectsController@show');
-    Route::get('/download/{project}','ProjectsController@download');
+    Route::get('/download/project/{project}','ProjectsController@download');
 });
 
 Route::prefix('admin')->group(function (){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/approve/project/{project}', 'AdminController@show');
+    Route::post('/approve/project/{project}', 'ChapterController@store');
+
 });

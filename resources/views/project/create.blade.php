@@ -15,7 +15,7 @@
         @endif
         <div class="col-md-5 offset-md-2">
             <h4>Create new project</h4>
-            <form method="post" action="/project/create" enctype="multipart/form-data">
+            <form method="post" action="/projects/create" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="title"

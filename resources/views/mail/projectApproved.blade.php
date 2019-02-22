@@ -1,0 +1,1 @@
+<h1> HEY YOUR PROJECT BY NAME {{$project->title}} HAS BEEN APPROVED</h1>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,6 +24,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $projects = Project::where('approved', 0)->get();
+        return view('admin.home', compact('projects'));
     }
+
+    public function show(Project $project){
+        return view('admin.uploadChapters', compact('project'));
+    }
+
 }

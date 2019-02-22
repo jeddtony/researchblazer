@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Chapter;
+use App\Mail\ProjectApproved;
+use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ChapterController extends Controller
 {
@@ -33,9 +36,28 @@ class ChapterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Project $project, Request $request)
     {
         //
+
+        for ($counter = 0; $counter < count($request->title); $counter++){
+            $chapterFile = $request->chapter[$counter];
+            $filename = 'project-'.$project->id.'-chapter-'.($counter + 1).'-'.time().'.'.$chapterFile->getClientOriginalExtension();
+            $path = $chapterFile->storeAs('Chapter', $filename);
+
+            Chapter::create([
+                'project_id' => $project->id,
+                'chapter' => $counter + 1,
+                'title' => $request->title[$counter],
+                'link_to_storage' => $path,
+            ]);
+    }
+        $project->approved = 1;
+        $project->abstract = $request->abstract;
+        $project->save();
+        Mail::to($project->user)->send(new ProjectApproved($project));
+        return redirect('/admin/')->with('status', 'Chapters stored successfully');
+
     }
 
     /**
