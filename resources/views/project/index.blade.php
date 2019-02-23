@@ -21,7 +21,7 @@
             </div>
 
             <div id="Latest" class="tabcontent">
-                <h3>Latest</h3>
+                <h3 class="center-text">Latest</h3>
                 @foreach($latests as $latest)
                     <h5> <a href="/projects/{{$latest->id}}"> {{$latest->title}} </a></h5>
                     @foreach($latest->tags as $tag)
