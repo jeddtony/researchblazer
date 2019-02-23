@@ -12,7 +12,7 @@
                     <br>
                     <br>
                 </div>
-                <h5 class="center-text">Download complete project <a href="download/project/{{$project->id}}" class="btn btn-primary"> Download <i class="fas fa-download"></i></a> </h5>
+                <h5 class="center-text">Download complete project <a href="payment/project/{{$project->id}}" class="btn btn-primary"> Download <i class="fas fa-download"></i></a> </h5>
             </div>
             <br>
             <br>

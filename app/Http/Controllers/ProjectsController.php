@@ -129,4 +129,8 @@ class ProjectsController extends Controller
 //       return Response::download(storage_path().'/app/'.$project->link_to_storage);
         return response()->download($file, $project->title.'.pdf', $headers);
     }
+
+    public function payment(Project $project){
+        return view('project.downloadProject', compact('project'));
+    }
 }

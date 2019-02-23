@@ -104,4 +104,8 @@ class ChapterController extends Controller
     {
         //
     }
+
+    public function payment(Chapter $chapter){
+        return view('project.downloadChapter', compact('chapter'));
+    }
 }

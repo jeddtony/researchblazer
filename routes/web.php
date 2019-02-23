@@ -19,11 +19,16 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::prefix('projects')->group(function (){
     Route::get('/', 'ProjectsController@index');
     Route::get('/create', 'ProjectsController@create');
     Route::post('/create', 'ProjectsController@store');
     Route::get('/{project}', 'ProjectsController@show');
+    Route::get('/payment/project/{project}', 'ProjectsController@payment');
+    Route::post('/payment/project/{project}', 'PaidProductController@storeProject');
+    Route::get('/payment/chapter/{chapter}', 'ChapterController@payment');
+    Route::post('/payment/chapter/{chapter}', 'PaidProductController@storeChapter');
     Route::get('/download/project/{project}','ProjectsController@download');
 });
 
