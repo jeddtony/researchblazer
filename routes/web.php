@@ -38,5 +38,6 @@ Route::prefix('admin')->group(function (){
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/approve/project/{project}', 'AdminController@show');
     Route::post('/approve/project/{project}', 'ChapterController@store');
-
+    Route::get('/project/softdelete/{project}', 'ProjectsController@softDelete');
+    Route::get('/project/delete/{project}', 'ProjectsController@destroy');
 });

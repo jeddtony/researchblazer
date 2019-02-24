@@ -22,6 +22,7 @@ class CreateProjectsTable extends Migration
             $table->integer('number_of_pages')->nullable();
             $table->text('abstract')->nullable();
             $table->integer('number_of_downloads')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

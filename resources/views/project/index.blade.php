@@ -16,6 +16,8 @@
                 @foreach($popular->tags as $tag)
                     <span class="tag">{{$tag->name}}</span>
                     @endforeach
+
+                <span class="username"> By: {{$popular->user->name}}</span>
                     <hr>
                     @endforeach
             </div>

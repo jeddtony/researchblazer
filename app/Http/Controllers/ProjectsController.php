@@ -20,8 +20,8 @@ class ProjectsController extends Controller
     {
         //
         $all = Project::all();
-        $latests = Project::latest()->limit(10)->get();
-        $populars = Project::orderBy('number_of_downloads', 'desc')->limit(10)->get();
+        $latests = Project::where('approved', 1)->latest()->limit(10)->get();
+        $populars = Project::where('approved', 1)->orderBy('number_of_downloads', 'desc')->limit(10)->get();
 //        dd($all);
 //        dd($latests);
         return view('project.index', compact('latests', 'populars'));
@@ -112,13 +112,26 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Project  $projects
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $projects)
+    public function destroy(Project $project)
     {
         //
+        $project->forceDelete();
+        return redirect('/admin')->with('status', 'Project deleted Permanently');
     }
+
+    /**
+     * @param Project $project
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function softDelete(Project $project){
+//        dd('In the soft Delete ');
+        $project->delete();
+        return redirect('/admin')->with('status', 'Project deleted temporarily');
+    }
+
 
     public function download(Project $project){
 //        return Storage::get($project->link_to_storage);

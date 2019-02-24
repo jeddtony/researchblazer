@@ -63,6 +63,10 @@
             border-top: none;
         }
 
+        .username{
+            font-style: italic;
+        }
+
     </style>
 </head>
 <body>
