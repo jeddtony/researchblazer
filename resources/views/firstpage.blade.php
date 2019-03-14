@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
-    <div class="row home-image">
+    <div class="row home-image" >
         <div class="col-md-12 big-top-margin">
             <div class="row py-4">
 
@@ -21,7 +21,7 @@
         </div>
 
     <div class="row style-text top-margin white-background">
-        <div class="col-7 col-md-7 offset-3">
+        <div class="col-10 col-md-7 offset-1 offset-md-3">
             <h3> <strong>Need a Project? </strong></h3>
             <p>It's easy, Simply select a project from the project category listed</p>
             <p>If you don't find a project that suites your need, simply post the project of your choice on our forums

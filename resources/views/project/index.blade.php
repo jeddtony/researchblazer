@@ -29,9 +29,14 @@
                     @foreach($latest->tags as $tag)
                         <span class="tag">{{$tag->name}}</span>
                     @endforeach
+
+                    <span class="username"> By: {{$latest->user->name}}</span>
                     <hr>
                 @endforeach
             </div>
+
+            <h5><a href="projects/popular" id="popularLink">View all popular projects</a>
+            <a href="projects/latest" id="latestLink">View all latest projects</a> </h5>
         </div>
 
         <!--- Tag Side Bar -->

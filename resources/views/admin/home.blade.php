@@ -41,8 +41,18 @@
                         <th scope="row">{{++$counter}}</th>
                         <td>{{$project->user->name}}</td>
                         <td colspan="2">{{$project->title}}</td>
-                        <td><a href="projects/download/project/{{$project->id}}" class="btn btn-primary">Download</a> &nbsp;
-                            <a href="admin/approve/project/{{$project->id}}" class="btn btn-success">Approve</a> </td>
+                        <td>
+                            <a href="projects/download/project/{{$project->id}}" class="btn btn-primary">Download</a> &nbsp;
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Approve
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="admin/approve/project/{{$project->id}}">With chapters</a>
+                                <a class="dropdown-item" href="admin/approve/project/{{$project->id}}/without-chapter">Without chapters</a>
+                            </div>
+
+                            {{--<a href="admin/approve/project/{{$project->id}}" class="btn btn-success">Approve with chapters</a>--}}
+                            </td>
                         <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$project->id}}">Delete</a> </td>
                         <td>{{$project->created_at->diffForHumans()}}</td>
                     </tr>

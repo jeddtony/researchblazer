@@ -19,13 +19,19 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-        $all = Project::all();
         $latests = Project::where('approved', 1)->latest()->limit(10)->get();
         $populars = Project::where('approved', 1)->orderBy('number_of_downloads', 'desc')->limit(10)->get();
-//        dd($all);
-//        dd($latests);
         return view('project.index', compact('latests', 'populars'));
+    }
 
+    public function indexPopular(){
+        $projects = Project::where('approved', 1)->orderBy('number_of_downloads', 'desc')->paginate(10);
+        return view('project.popularProject', compact('projects'));
+    }
+
+    public function indexLatest(){
+        $projects = Project::where('approved', 1)->latest()->paginate(10);
+        return view('project.latestProject', compact('projects'));
     }
 
     /**
@@ -89,24 +95,31 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Project  $projects
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $projects)
+    public function edit(Project $project)
     {
         //
+        return view('admin.uploadProject', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $projects
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $projects)
+    public function update(Request $request, Project $project)
     {
         //
+        $project->title = $request->title;
+        $project->abstract = $request->abstract;
+        $project->approved = 1;
+        $project->save();
+
+        return redirect()->route('admin.dashboard') ->with('status', 'Project approved');
     }
 
     /**

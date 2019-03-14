@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('projects')->group(function (){
     Route::get('/', 'ProjectsController@index');
+    Route::get('/popular', 'ProjectsController@indexPopular');
+    Route::get('/latest', 'ProjectsController@indexLatest');
     Route::get('/create', 'ProjectsController@create');
     Route::post('/create', 'ProjectsController@store');
     Route::get('/{project}', 'ProjectsController@show');
@@ -38,6 +40,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/approve/project/{project}', 'AdminController@show');
     Route::post('/approve/project/{project}', 'ChapterController@store');
+    Route::get('/approve/project/{project}/without-chapter', 'ProjectsController@edit');
+    Route::post('/approve/project/{project}/without-chapter', 'ProjectsController@update');
     Route::get('/project/softdelete/{project}', 'ProjectsController@softDelete');
     Route::get('/project/delete/{project}', 'ProjectsController@destroy');
 });
