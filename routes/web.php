@@ -44,4 +44,6 @@ Route::prefix('admin')->group(function (){
     Route::post('/approve/project/{project}/without-chapter', 'ProjectsController@update');
     Route::get('/project/softdelete/{project}', 'ProjectsController@softDelete');
     Route::get('/project/delete/{project}', 'ProjectsController@destroy');
+    Route::get('/tags/create', 'TagController@create');
+    Route::post('/tags/create', 'TagController@store')->name('createTag');
 });

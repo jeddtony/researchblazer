@@ -28,7 +28,7 @@
         }
 
         .home-image{
-            background-image: url({{url('img/landing_page_pic.jpg') }} );
+            background-image: url({{url('img/landing_page_pic-2.jpg') }} );
             background-repeat: no-repeat;
             background-size: cover;
             color: #fff;
@@ -36,6 +36,58 @@
 
         .top-margin{
             margin-top: 30px;
+        }
+
+        .big-top-margin{
+            margin-top: 50px;
+        }
+
+        .center-text{
+            text-align: center;
+        }
+
+        .top-margin{
+            margin-top: 100px;
+        }
+
+        .button-top-margin{
+            margin-top: 50px;
+        }
+
+        .white-text{
+            color: #ffffff;
+        }
+
+        .big-text{
+            font-size: 20px;
+        }
+
+        .greybackground{
+            background-color:#F5F5F5
+        }
+
+        .fontawesome-icon{
+            font-size: 60px;
+            /* text-align: center; */
+        }
+
+        .how-it-works-icon{
+            height: 150px;
+            width: 131px
+        }
+
+        .transbox{
+            background-color: rgb(16, 35, 199);
+            opacity: 0.6;
+        }
+
+        @media screen and (max-width: 450px){
+            .home-image{
+                background-image: url({{url('img/landing_page_pic-sm.png') }} );
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: #fff;
+            }
         }
 
     </style>
