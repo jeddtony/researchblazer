@@ -62,7 +62,9 @@ class ProjectsController extends Controller
 
         $projectFile = $request->file('project');
         $filename = ''.auth()->id().'-'.time().'.'.$projectFile->getClientOriginalExtension();
-        $path = $projectFile->storeAs('project', $filename);
+//        $path = $projectFile->storeAs('project', $filename);
+
+        $path = $projectFile->store('project', 's3');
 
         $projectId = Project::create([
             'user_id' => Auth::user()->id,
