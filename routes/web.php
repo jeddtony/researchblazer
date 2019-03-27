@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/clear-stupid-cache', function(){
+    Artisan::call('config:cache');
+});
 
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('projects')->group(function (){
     Route::get('/', 'ProjectsController@index');

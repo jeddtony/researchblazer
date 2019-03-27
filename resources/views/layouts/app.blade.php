@@ -28,7 +28,7 @@
         }
 
         .home-image{
-            background-image: url({{url('img/landing_page_pic-2.jpg') }} );
+            background-image: url({{url('img/bookcase-books.jpg') }} );
             background-repeat: no-repeat;
             background-size: cover;
             color: #fff;
@@ -81,14 +81,6 @@
             opacity: 0.6;
         }
 
-        @media screen and (max-width: 450px){
-            .home-image{
-                background-image: url({{url('img/landing_page_pic-sm.png') }} );
-                background-repeat: no-repeat;
-                background-size: cover;
-                color: #fff;
-            }
-        }
 
     </style>
 </head>
@@ -158,6 +150,10 @@
 
             @yield('content')
         </main>
+
+        <footer class="col-12 col-md-12">
+
+        </footer>
     </div>
 </body>
 </html>
