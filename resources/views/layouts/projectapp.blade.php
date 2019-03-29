@@ -88,11 +88,11 @@
                         <a class="nav-link" href="/projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/seminar">Seminars</a>
+                        <a class="nav-link" href="/tags">Tags</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/it-reports">IT Reports</a>
-                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link" href="/it-reports">IT Reports</a>--}}
+                    {{--</li>--}}
                 </ul>
 
                 <!-- Right Side Of Navbar -->

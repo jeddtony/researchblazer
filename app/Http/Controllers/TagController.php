@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    public function index (Tag $tag = null){
+       $projects = $tag->projects();
+       return view('tagPage', compact('projects'));
+    }
     //
     public function create(){
         return view('admin.createTag');

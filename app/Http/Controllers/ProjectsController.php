@@ -79,7 +79,8 @@ class ProjectsController extends Controller
                 $projectId->tags()->attach($realTag);
             }
         }
-        return redirect('/projects/create')->with('status', 'Project created successfully');
+        return redirect('/projects/create')
+            ->with('status', 'Project created successfully. You will be notified when it is approved');
     }
 
     /**

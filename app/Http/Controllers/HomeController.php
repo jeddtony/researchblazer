@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -31,5 +32,28 @@ class HomeController extends Controller
         $unapprovedProjects = count( Project::where($matchUnapproved)->get());
 
         return view('home', compact('approvedProjects', 'unapprovedProjects'));
+    }
+
+    public function showAccount(){
+        $accountName = Account::all('account_name', 'account_number', 'bank')->where('user_id', auth()->id());
+//        dd($accountName);
+        return view('userAccounts', compact('accountName'));
+    }
+    public function storeAccount(Request $request){
+
+        $request->validate([
+            'accountName' => ['required'],
+            'accountNumber' => ['required', 'min:10', 'max:10'],
+            'bank' => ['required'],
+        ]);
+
+        Account::create([
+            'user_id' => auth()->id(),
+            'account_name' => $request->accountName,
+            'account_number' => $request->accountNumber,
+            'bank' => $request->bank,
+        ]);
+
+        return redirect('/home')->with('status', 'Account details updated successfully');
     }
 }

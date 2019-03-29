@@ -5,7 +5,7 @@
         @if(session('status'))
         <div class="col-md-4 offset-md-2">
             <div class="alert alert-success alert-dismissible fade show"
-                 role="alert" >
+                 role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,6 +35,17 @@
                 <button type="submit" class="btn btn-primary"> Submit</button>
                 </div>
             </form>
+
+            <h4>For your project to be approved it must meet the following criteria</h4>
+            <p>
+                <ul>
+                    <li>It has an abstract</li>
+                <li>All the chapters are complete, no missing pages or chapters</li>
+                <li>All necessary diagrams are included</li>
+                <li>The reference pages must be included</li>
+                <li>You can remove the following pages Acknowledgement, Dedication, Approval Page and the likes</li>
+            </ul>
+            </p>
         </div>
 
         <div class="col-md-4">

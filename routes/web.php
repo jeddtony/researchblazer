@@ -28,7 +28,7 @@ Route::prefix('projects')->group(function (){
     Route::get('/popular', 'ProjectsController@indexPopular');
     Route::get('/latest', 'ProjectsController@indexLatest');
     Route::get('/create', 'ProjectsController@create');
-    Route::post('/create', 'ProjectsController@store');
+    Route::post('/create', 'ProjectsController@store')->middleware('verified');
     Route::get('/{project}', 'ProjectsController@show');
     Route::get('/payment/project/{project}', 'ProjectsController@payment');
     Route::post('/payment/project/{project}', 'PaidProductController@storeProject');
@@ -37,6 +37,9 @@ Route::prefix('projects')->group(function (){
     Route::get('/download/project/{project}','ProjectsController@download');
 });
 
+Route::get('/tags/{tag}', 'TagController@index');
+Route::get('/user/accounts', 'HomeController@showAccount')->name('userAccount');
+Route::post('/user/accounts', 'HomeController@storeAccount')->name('userAccount');
 Route::prefix('admin')->group(function (){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
