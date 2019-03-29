@@ -28,16 +28,20 @@ Route::prefix('projects')->group(function (){
     Route::get('/popular', 'ProjectsController@indexPopular');
     Route::get('/latest', 'ProjectsController@indexLatest');
     Route::get('/create', 'ProjectsController@create');
-    Route::post('/create', 'ProjectsController@store')->middleware('verified');
-    Route::get('/{project}', 'ProjectsController@show');
+    Route::post('/create', 'ProjectsController@store');
     Route::get('/payment/project/{project}', 'ProjectsController@payment');
     Route::post('/payment/project/{project}', 'PaidProductController@storeProject');
     Route::get('/payment/chapter/{chapter}', 'ChapterController@payment');
     Route::post('/payment/chapter/{chapter}', 'PaidProductController@storeChapter');
     Route::get('/download/project/{project}','ProjectsController@download');
+    Route::get('/unapproved', 'HomeController@showUnapprovedProject');
+    Route::get('/approved', 'HomeController@showApprovedProject');
+    Route::get('/{project}', 'ProjectsController@show');
 });
 
-Route::get('/tags/{tag}', 'TagController@index');
+Route::get('/tags', 'TagController@index');
+Route::get('/tags/{tag}', 'TagController@show');
+
 Route::get('/user/accounts', 'HomeController@showAccount')->name('userAccount');
 Route::post('/user/accounts', 'HomeController@storeAccount')->name('userAccount');
 Route::prefix('admin')->group(function (){

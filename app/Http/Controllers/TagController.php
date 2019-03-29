@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function index (Tag $tag = null){
-       $projects = $tag->projects();
-       return view('tagPage', compact('projects'));
+    public function index (Tag $tag){
+       $tags = Tag::all();
+//       dd($projects);
+       return view('allTags', compact('tags'));
     }
     //
     public function create(){
@@ -24,6 +25,11 @@ class TagController extends Controller
             ]);
         }
         return redirect('/admin/tags/create')->with('status', 'Tags created successfully');
+    }
 
+    public function show(Tag $tag){
+        $projects = $tag->projects;
+//       dd($projects);
+        return view('tagProject', compact('projects', 'tag'));
     }
 }

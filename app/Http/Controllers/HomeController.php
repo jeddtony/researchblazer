@@ -56,4 +56,16 @@ class HomeController extends Controller
 
         return redirect('/home')->with('status', 'Account details updated successfully');
     }
+
+    public function showUnapprovedProject(){
+        $matchThis = ['user_id'=> auth()->id(), 'approved' => 0];
+        $projects = Project::where($matchThis)->get();
+        return view('project.userUnapprovedProject', compact('projects'));
+    }
+
+    public function showApprovedProject(){
+        $matchThis = ['user_id'=> auth()->id(), 'approved' => 1];
+        $projects = Project::where($matchThis)->get();
+        return view('project.approvedProject', compact('projects'));
+    }
 }

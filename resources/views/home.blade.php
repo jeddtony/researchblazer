@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-body">
                     <h4>{{$approvedProjects}}</h4>
-                    <a href="#" class="btn btn-outline-primary">View all</a>
+                    <a href="/projects/approved" class="btn btn-outline-primary">View all</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <h4>{{$unapprovedProjects}}</h4>
-                <a href="#" class="btn btn-outline-primary">View all</a>
+                <a href="/projects/unapproved" class="btn btn-outline-primary">View all</a>
             </div>
         </div>
     </div>
