@@ -10,7 +10,7 @@
     <title>Researchub</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -91,7 +91,7 @@
                         <a class="nav-link" href="/tags">Tags</a>
                     </li>
                     {{--<li class="nav-item">--}}
-                        {{--<a class="nav-link" href="/it-reports">IT Reports</a>--}}
+                    {{--<a class="nav-link" href="/it-reports">IT Reports</a>--}}
                     {{--</li>--}}
                 </ul>
 
@@ -106,7 +106,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                    @endif
+
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -125,6 +125,7 @@
                                 </form>
                             </div>
                         </li>
+                    @endif
                         @endguest
                 </ul>
             </div>
@@ -137,40 +138,9 @@
     </main>
 </div>
 
-<script>
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-
-        if(cityName === 'Popular'){
-            document.getElementById('popularLink').style.display = "block";
-            document.getElementById('latestLink').style.display = "none";
-        }
-        if(cityName === 'Latest'){
-            document.getElementById('popularLink').style.display = "none";
-            document.getElementById('latestLink').style.display = "block";
-        }
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-    document.getElementById('popularLink').style.display = "block";
-    document.getElementById('latestLink').style.display = "none";
-
-</script>
-
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 {{--<script src="{{asset('js/axiosjs.js')}}" ></script>--}}
-<script src="/js/axiosjs.js"></script>
+<script src="{{asset('js/axiosjs.js')}}"></script>
 </body>
 </html>

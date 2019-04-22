@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('firstpage');
 });
@@ -22,6 +24,13 @@ Route::get('/clear-stupid-cache', function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/user', function (Request $request){
+//    return ['the', 'request', 'was', 'seen'];
+    return [$request->fileSelect];
+});
+
+Route::post('/users', 'ProjectsController@store');
 
 Route::prefix('projects')->group(function (){
     Route::get('/', 'ProjectsController@index');
@@ -54,6 +63,6 @@ Route::prefix('admin')->group(function (){
     Route::post('/approve/project/{project}/without-chapter', 'ProjectsController@update');
     Route::get('/project/softdelete/{project}', 'ProjectsController@softDelete');
     Route::get('/project/delete/{project}', 'ProjectsController@destroy');
-    Route::get('/tags/create', 'TagController@create');
-    Route::post('/tags/create', 'TagController@store')->name('createTag');
+    Route::get('/tags/create', 'TagController@create')->name('createTags');
+    Route::post('/tags/create', 'TagController@store')->name('createTags');
 });

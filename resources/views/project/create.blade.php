@@ -1,4 +1,4 @@
-@extends('layouts.projectapp')
+@extends('layouts.uploadapp')
 @section('content')
 
     <div class="row p-4">
@@ -13,16 +13,16 @@
             </div>
         </div>
         @endif
-        <div class="col-md-5 offset-md-2">
+        <div class="col-md-5 offset-md-2" id="root">
             <h4>Create new project</h4>
             <form method="post" action="/projects/create" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title"
+                    <input type="text" v-model="title" id="title" class="form-control"  name="title"
                            placeholder="Project Title" required>
                 </div>
                 <div class="form-group">
-                <input type="file" name="project" accept="application/pdf,.doc,.docx"  required>
+                <input type="file" name="project" id="project" accept="application/pdf,.doc,.docx" ref="myFile"  v-on:change="project" required>
                 </div>
 
                 @foreach($tags as $tag)
@@ -32,9 +32,12 @@
                 </div>
                 @endforeach
                 <div class="form-group p-4">
-                <button type="submit" class="btn btn-primary"> Submit</button>
+                    <button type="submit"  class="btn btn-primary"> Submit</button>
+                    {{--<button type="button" v-on:click="uploadFile" class="btn btn-primary"> Submit</button>--}}
                 </div>
             </form>
+
+
 
             <h4>For your project to be approved it must meet the following criteria</h4>
             <p>

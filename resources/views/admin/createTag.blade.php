@@ -27,7 +27,7 @@
                     <div class="col-md-12">
                         <div class="row" style="padding-top: 20px; padding-left: 15px">
                             <div class="col-12 col-md-12">
-                                <form action="{{route('createTag')}}" method="POST" >
+                                <form action="{{route('createTags')}}" method="POST" >
                                     @csrf
                                     <label>Name:</label>
                                     <input type="text" name="name[]" class="form-control mb-2 mr-sm-2 col-md-8 col-12" required>
@@ -45,7 +45,7 @@
                                     <input type="text" name="name[]" class="form-control mb-2 mr-sm-2 col-md-8 col-12" required>
 
                                     <div class="py-4">
-                                        <input type="submit" class=" btn btn-primary col-2 col-md-1">
+                                        <input type="submit" class="btn btn-primary col-2 col-md-1">
                                     </div>
                                 </form>
                             </div>

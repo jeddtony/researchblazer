@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Tag;
+use Exception;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -55,6 +57,7 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         //
+//        return($request);
         $request->validate([
             'title' => ['required', 'min:10', 'max:50'],
             'project' => 'required|file|mimes:pdf,doc,docx'
@@ -64,23 +67,36 @@ class ProjectsController extends Controller
         $filename = ''.auth()->id().'-'.time().'.'.$projectFile->getClientOriginalExtension();
 //        $path = $projectFile->storeAs('project', $filename);
 
-        $path = $projectFile->store('project', 's3');
+        $statusMessage = '';
 
-        $projectId = Project::create([
-            'user_id' => Auth::user()->id,
-            'title'  => $request['title'],
-            'link_to_storage' => $path,
-            'approved' => 0,
-        ]);
+        try{
+//            $path = $projectFile->store('project', 's3');
+//            $contents = Storage::disk('s3');
+            $path = Storage::disk('s3')->putFile('project', new File($projectFile));
+//            return  $statusMessage = 'Project created successfully. You will be notified when it is approved';
+//            dd($path);
 
-        if($request->tags){
-            foreach ($request->tags as $tag) {
-                $realTag = Tag::where('name', $tag)->first();
-                $projectId->tags()->attach($realTag);
+            $projectId = Project::create([
+                'user_id' => Auth::user()->id,
+                'title'  => $request['title'],
+                'link_to_storage' => $path,
+                'approved' => 0,
+            ]);
+
+            if($request->tags){
+                foreach ($request->tags as $tag) {
+                    $realTag = Tag::where('name', $tag)->first();
+                    $projectId->tags()->attach($realTag);
+                }
             }
+            $statusMessage = 'Project created successfully. You will be notified when it is approved';
         }
+        catch(Exception $e){
+            $statusMessage = 'File failed to upload';
+        }
+
         return redirect('/projects/create')
-            ->with('status', 'Project created successfully. You will be notified when it is approved');
+            ->with('status', $statusMessage);
     }
 
     /**
@@ -156,7 +172,8 @@ class ProjectsController extends Controller
             'Content-Type' => 'application/pdf',
         ];
 //       return Response::download(storage_path().'/app/'.$project->link_to_storage);
-        return response()->download($file, $project->title.'.pdf', $headers);
+//        return response()->download($file, $project->title.'.pdf', $headers);
+        return Storage::disk('s3')->download($project->link_to_storage, $project->title, $headers);
     }
 
     public function payment(Project $project){

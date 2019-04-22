@@ -28,7 +28,7 @@
         }
 
         .home-image{
-            background-image: url({{url('img/bookcase-books.jpg') }} );
+            background-image: url({{url('img/edited-book-case.png') }} );
             background-repeat: no-repeat;
             background-size: cover;
             color: #fff;
