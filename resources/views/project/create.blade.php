@@ -19,15 +19,15 @@
                 @csrf
                 <div class="form-group">
                     <input type="text" v-model="title" id="title" class="form-control"  name="title"
-                           placeholder="Project Title" required>
+                           placeholder="Project Title" >
                 </div>
                 <div class="form-group">
-                <input type="file" name="project" id="project" accept="application/pdf,.doc,.docx" ref="myFile"  v-on:change="project" required>
+                <input type="file" name="project" id="project" accept="application/pdf,.doc,.docx" ref="myFile"  v-on:change="project" >
                 </div>
 
                 @foreach($tags as $tag)
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="tags[]" id="inlineCheckbox{{$tag->id}}" value="{{$tag->id}}">
+                    <input class="form-check-input" type="radio" name="tag" id="inlineCheckbox{{$tag->id}}" value="{{$tag->id}}">
                     <label class="form-check-label" for="inlineCheckbox{{$tag->id}}">{{$tag->name}}</label>
                 </div>
                 @endforeach
@@ -36,6 +36,8 @@
                     {{--<button type="button" v-on:click="uploadFile" class="btn btn-primary"> Submit</button>--}}
                 </div>
             </form>
+
+            @include('layouts.errors')
 
 
 

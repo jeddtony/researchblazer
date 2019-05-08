@@ -9,7 +9,7 @@ class Tag extends MyModel
     //
 
     public function projects(){
-        return $this->belongsToMany('App\Project');
+        return $this->hasMany('App\Project');
     }
 
     public function getRouteKeyName()

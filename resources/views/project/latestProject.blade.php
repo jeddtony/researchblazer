@@ -6,9 +6,9 @@
 
             @foreach($projects as $project)
                 <h5> <a href="/projects/{{$project->id}}">{{$project->title}} </a></h5>
-                @foreach($project->tags as $tag)
-                    <span class="tag">{{$tag->name}}</span>
-                @endforeach
+                {{--@foreach($project->tags as $tag)--}}
+                    {{--<span class="tag">{{$tag->name}}</span>--}}
+                {{--@endforeach--}}
 
                 <span class="username"> By: {{$project->user->name}}</span>
                 <hr>

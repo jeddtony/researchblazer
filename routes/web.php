@@ -23,7 +23,7 @@ Route::get('/clear-stupid-cache', function(){
     Artisan::call('config:cache');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::post('/user', function (Request $request){
 //    return ['the', 'request', 'was', 'seen'];
@@ -37,7 +37,7 @@ Route::prefix('projects')->group(function (){
     Route::get('/popular', 'ProjectsController@indexPopular');
     Route::get('/latest', 'ProjectsController@indexLatest');
     Route::get('/create', 'ProjectsController@create');
-    Route::post('/create', 'ProjectsController@store');
+    Route::post('/create', 'ProjectsController@store')->middleware('verified');
     Route::get('/payment/project/{project}', 'ProjectsController@payment');
     Route::post('/payment/project/{project}', 'PaidProductController@storeProject');
     Route::get('/payment/chapter/{chapter}', 'ChapterController@payment');
@@ -51,8 +51,8 @@ Route::prefix('projects')->group(function (){
 Route::get('/tags', 'TagController@index');
 Route::get('/tags/{tag}', 'TagController@show');
 
-Route::get('/user/accounts', 'HomeController@showAccount')->name('userAccount');
-Route::post('/user/accounts', 'HomeController@storeAccount')->name('userAccount');
+Route::get('/user/accounts', 'HomeController@showAccount')->name('userAccount')->middleware('verified');
+Route::post('/user/accounts', 'HomeController@storeAccount')->name('userAccount')->middleware('verified');
 Route::prefix('admin')->group(function (){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

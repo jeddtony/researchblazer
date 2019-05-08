@@ -36,6 +36,7 @@ $factory->define(App\Project::class, function(Faker $faker){
     return[
         'title' => $faker->word,
         'user_id' => User::all()->random()->id,
+        'tag_id'=> rand(1, 50),
         'link_to_storage' => $faker->url,
         'approved' => rand(0,1),
         'number_of_pages' => rand(0, 70),

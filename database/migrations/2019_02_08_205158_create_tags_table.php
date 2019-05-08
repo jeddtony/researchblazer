@@ -18,12 +18,6 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-
-        Schema::create('project_tag', function (Blueprint $table){
-            $table->integer('project_id');
-            $table->integer('tag_id');
-            $table->primary(['project_id', 'tag_id']);
-        });
     }
 
     /**

@@ -76,19 +76,14 @@ class ProjectsController extends Controller
 //            return  $statusMessage = 'Project created successfully. You will be notified when it is approved';
 //            dd($path);
 
-            $projectId = Project::create([
+                 Project::create([
                 'user_id' => Auth::user()->id,
                 'title'  => $request['title'],
                 'link_to_storage' => $path,
                 'approved' => 0,
+                'tag_id' => $request->tag
             ]);
 
-            if($request->tags){
-                foreach ($request->tags as $tag) {
-                    $realTag = Tag::where('name', $tag)->first();
-                    $projectId->tags()->attach($realTag);
-                }
-            }
             $statusMessage = 'Project created successfully. You will be notified when it is approved';
         }
         catch(Exception $e){

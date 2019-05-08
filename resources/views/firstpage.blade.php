@@ -5,14 +5,14 @@
         <div class="col-md-12 big-top-margin">
             <div class="row py-4">
 
-                <div class="col-md-6 offset-md-1 top-margin">
-                    <h1>Get well written tertiary institutions projects with ease</h1>
+                <div class="col-md-9 offset-md-2 top-margin">
+                    <span style="font-size: 50px">Get well written tertiary institutions projects with ease</span>
 
                 </div>
             </div>
                 {{--<div class="col-2 col-md-3"></div>--}}
                 <div class="row py-4 ">
-                    <div class="col-6 col-md-6 offset-1">
+                    <div class="col-6 col-md-6 offset-4">
                         <a href="/projects" class="btn btn-lg btn-success"><h4>Buy Projects </h4></a> &nbsp;
                         <a href="/projects/create" class="btn btn-lg btn-outline-light"><h4>Upload Projects </h4></a>
                     </div>

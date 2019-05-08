@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->text('title');
+            $table->integer('tag_id');
             $table->string('link_to_storage');
             $table->boolean('approved')->default(0);
             $table->integer('number_of_pages')->nullable();

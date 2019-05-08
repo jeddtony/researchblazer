@@ -13,9 +13,9 @@
                 <h4 class="center-text">Popular</h4>
                 @foreach($populars as $popular)
                     <h5> <a href="/projects/{{$popular->id}}">{{$popular->title}} </a></h5>
-                @foreach($popular->tags as $tag)
-                    <span class="tag">{{$tag->name}}</span>
-                    @endforeach
+                {{--@foreach($popular->tags as $tag)--}}
+                    {{--<span class="tag">{{$tag->name}}</span>--}}
+                    {{--@endforeach--}}
 
                 <span class="username"> By: {{$popular->user->name}}</span>
                     <hr>
@@ -26,9 +26,9 @@
                 <h3 class="center-text">Latest</h3>
                 @foreach($latests as $latest)
                     <h5> <a href="/projects/{{$latest->id}}"> {{$latest->title}} </a></h5>
-                    @foreach($latest->tags as $tag)
-                        <span class="tag">{{$tag->name}}</span>
-                    @endforeach
+                    {{--@foreach($latest->tags as $tag)--}}
+                        {{--<span class="tag">{{$tag->name}}</span>--}}
+                    {{--@endforeach--}}
 
                     <span class="username"> By: {{$latest->user->name}}</span>
                     <hr>

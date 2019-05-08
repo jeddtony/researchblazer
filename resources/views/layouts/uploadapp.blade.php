@@ -67,6 +67,9 @@
             font-style: italic;
         }
 
+        .custom-nav-height{
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -85,10 +88,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/projects">Projects</a>
+                        <a class="nav-link custom-nav-height" href="/projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tags">Tags</a>
+                        <a class="nav-link custom-nav-height" href="/tags">Categories</a>
                     </li>
                     {{--<li class="nav-item">--}}
                     {{--<a class="nav-link" href="/it-reports">IT Reports</a>--}}
@@ -100,21 +103,21 @@
                     <!-- Authentication Links -->
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link custom-nav-height" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link custom-nav-height" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-
+                    @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle custom-nav-height" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item custom-nav-height" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -125,7 +128,6 @@
                                 </form>
                             </div>
                         </li>
-                    @endif
                         @endguest
                 </ul>
             </div>
