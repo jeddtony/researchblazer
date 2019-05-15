@@ -51,8 +51,8 @@ Route::prefix('projects')->group(function (){
 Route::get('/tags', 'TagController@index');
 Route::get('/tags/{tag}', 'TagController@show');
 
-Route::get('/user/accounts', 'HomeController@showAccount')->name('userAccount')->middleware('verified');
-Route::post('/user/accounts', 'HomeController@storeAccount')->name('userAccount')->middleware('verified');
+Route::get('/user/accounts', 'AccountController@show')->name('userAccount')->middleware('verified');
+Route::post('/user/accounts', 'AccountController@store')->name('userAccount')->middleware('verified');
 Route::prefix('admin')->group(function (){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

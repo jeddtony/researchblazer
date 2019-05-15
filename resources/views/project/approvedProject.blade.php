@@ -7,9 +7,9 @@
             @if(count($projects) > 0)
             @foreach($projects as $project)
                 <h5> <a href="/projects/{{$project->id}}">{{$project->title}} </a></h5>
-                @foreach($project->tags as $tag)
-                    <span class="tag">{{$tag->name}}</span>
-                @endforeach
+
+                    <span class="tag">{{$project->tag}}</span>
+
                 <hr>
             @endforeach
 

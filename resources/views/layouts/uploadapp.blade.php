@@ -10,7 +10,7 @@
     <title>Researchub</title>
 
     <!-- Scripts -->
-    {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -93,9 +93,7 @@
                     <li class="nav-item">
                         <a class="nav-link custom-nav-height" href="/tags">Categories</a>
                     </li>
-                    {{--<li class="nav-item">--}}
-                    {{--<a class="nav-link" href="/it-reports">IT Reports</a>--}}
-                    {{--</li>--}}
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -116,7 +114,14 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right custom-nav-height" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/home">
+                                    Dashboard
+                                </a>
+
+                                <a class="dropdown-item" href="/user/accounts">
+                                    Account
+                                </a>
                                 <a class="dropdown-item custom-nav-height" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -128,6 +133,7 @@
                                 </form>
                             </div>
                         </li>
+
                         @endguest
                 </ul>
             </div>

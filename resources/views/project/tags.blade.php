@@ -6,10 +6,6 @@
 
             @foreach($projects as $project)
                 <h5> <a href="/projects/{{$project->id}}">{{$project->title}} </a></h5>
-                @foreach($project->tags as $tag)
-                    <span class="tag">{{$tag->name}}</span>
-                @endforeach
-
                 <span class="username"> By: {{$project->user->name}}</span>
                 <hr>
             @endforeach
@@ -18,7 +14,7 @@
         </div>
 
         <!--- Tag Side Bar -->
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3 ">
             @include('partials.tags')
         </div>
 

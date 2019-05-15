@@ -59,22 +59,15 @@ class ProjectsController extends Controller
         //
 //        return($request);
         $request->validate([
-            'title' => ['required', 'min:10', 'max:50'],
+            'title' => ['required', 'min:10' ],
             'project' => 'required|file|mimes:pdf,doc,docx'
         ]);
 
         $projectFile = $request->file('project');
         $filename = ''.auth()->id().'-'.time().'.'.$projectFile->getClientOriginalExtension();
-//        $path = $projectFile->storeAs('project', $filename);
-
-        $statusMessage = '';
 
         try{
-//            $path = $projectFile->store('project', 's3');
-//            $contents = Storage::disk('s3');
             $path = Storage::disk('s3')->putFile('project', new File($projectFile));
-//            return  $statusMessage = 'Project created successfully. You will be notified when it is approved';
-//            dd($path);
 
                  Project::create([
                 'user_id' => Auth::user()->id,
@@ -132,6 +125,7 @@ class ProjectsController extends Controller
         $project->abstract = $request->abstract;
         $project->approved = 1;
         $project->save();
+
 
         return redirect()->route('admin.dashboard') ->with('status', 'Project approved');
     }
